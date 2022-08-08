@@ -1,0 +1,34 @@
+
+.App{
+    display: grid;
+    grid-template-columns:  min(16vw) auto;
+    grid-template-rows: repeat(7, minmax(20px, 100%));
+
+    min-height: 100vh;
+
+    .nav{
+        grid-row: 1 / -1;
+        grid-column: 1;
+    }
+
+    .header{
+        grid-row: 1;
+        grid-column: 2 / -1;
+    }
+
+    .footer{
+        grid-row: -1;
+    }
+
+
+}
+
+@media all and (orientation: portrait) {
+    .App{
+        grid-template-columns:  none;
+        .nav{
+            visibility: hidden;
+            width: 0;
+        }
+    }
+}

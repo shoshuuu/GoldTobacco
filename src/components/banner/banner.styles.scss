@@ -1,0 +1,11 @@
+.banner{
+    &__feed{
+        display: flex;
+        flex-flow: row nowrap;
+
+        &__item{
+            width: inherit;
+            height: 100px;
+        }
+    }
+}

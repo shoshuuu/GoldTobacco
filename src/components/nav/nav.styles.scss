@@ -1,0 +1,40 @@
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;;
+
+.nav{
+    display: grid;
+    grid-template-rows: repeat(6, minmax(100px, auto));
+    background: $background;
+    height: 100%;
+
+    &__title{
+        padding-left: 2vw;
+        display: flex;
+        align-items: center;
+        font-size: 1.5vw;
+        color: $text-color;
+    }
+
+    &__item{
+        padding-left: 2vw;
+        display: flex;
+        align-items: center;
+        transition: 0.3s;
+        position: relative;
+        
+        &:hover{
+            background: lighten($background, 4);
+        }
+
+        &__link{
+            text-decoration: none;
+            color: $text-color;;
+            font-size: 1.2vw;
+
+            &:hover{
+                color: $text-focus;
+            }
+        }
+    }
+}
