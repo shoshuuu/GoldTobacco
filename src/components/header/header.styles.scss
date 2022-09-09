@@ -1,51 +1,120 @@
-.header{
+.Header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  &__main {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
+    flex-direction: row wrap;
     align-items: center;
-    margin: 10px 4vw;
 
-    &__logo{
-        display: block;
-        width: 10vw;
+    &__title {
+      margin-left: 1vw;
+      font-size: 2vw;
+    }
+    &__logo {
+      width: 10vw;
+      height: auto;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: row;
+
+    &__phone,
+    &__mail {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &__number,
+      &__adress {
+        font-size: 1.4vw;
+        margin-left: 5px;
+        text-decoration: none;
+        color: black;
+      }
+    }
+    &__mail {
+      margin-left: 20px;
+    }
+  }
+
+  &__cart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__icon {
+      width: 3vw;
+      height: auto;
     }
 
-    &__title{
-        font-size: 2.5vw;
-        margin: 0 1vw;
+    &__total {
+      font-size: 1.4vw;
+      margin-left: 1vw;
     }
-
-    &__contacts{
-        display: flex;
-        flex-direction: row;
-        
-        &__phone, &__mail{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin: 0 1vw;
-
-            &__number, &__adress{
-                font-size: 1.2vw;
-                margin-left: 1vw;
-                text-decoration: none;
-                color: black;
-            }
-        }
-    }
-
-    &__cart{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        &__icon{
-            width: 3vw !important;
-        }
-    }
+  }
 }
 
-.icon{
-    width: 4vw;
-    height: auto;
+.icon {
+  width: 4vw;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    &__main {
+      display: flex;
+      flex-direction: row wrap;
+      align-items: center;
+
+      &__title {
+        font-size: 3.5vw;
+      }
+      &__logo {
+        width: 18vw;
+        height: auto;
+      }
+    }
+
+    &__contacts {
+      display: flex;
+      flex-direction: column;
+
+      &__phone,
+      &__mail {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &__number,
+        &__adress {
+          font-size: 2vw;
+          margin-left: 1vw;
+          text-decoration: none;
+        }
+      }
+      &__mail {
+        margin: 0;
+      }
+    }
+    .icon {
+      width: 6vw;
+      height: auto;
+    }
+
+    &__cart {
+      &__icon {
+        width: 4vw;
+        height: auto;
+      }
+      &__total {
+        font-size: 2vw;
+      }
+    }
+  }
 }

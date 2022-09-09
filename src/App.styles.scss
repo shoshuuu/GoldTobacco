@@ -1,34 +1,21 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 
-.App{
-    display: grid;
-    grid-template-columns:  min(16vw) auto;
-    grid-template-rows: repeat(7, minmax(20px, 100%));
+  overflow-x: hidden; /* Disable horizontal scroll */
 
-    min-height: 100vh;
-
-    .nav{
-        grid-row: 1 / -1;
-        grid-column: 1;
-    }
-
-    .header{
-        grid-row: 1;
-        grid-column: 2 / -1;
-    }
-
-    .footer{
-        grid-row: -1;
-    }
-
-
-}
-
-@media all and (orientation: portrait) {
-    .App{
-        grid-template-columns:  none;
-        .nav{
-            visibility: hidden;
-            width: 0;
-        }
-    }
+  .Main {
+    overflow-x: hidden;
+  }
+  .Nav {
+    width: calc(250px - 2vw);
+    position: fixed;
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: hidden;
+  }
 }

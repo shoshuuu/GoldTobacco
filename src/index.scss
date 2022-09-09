@@ -1,19 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;500;600&family=Merriweather:wght@300&display=swap");
 
-*{
+*,
+h1,
+h2,
+h3,
+p {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
 body {
   margin: 0;
-  font-family: 'Bitter', serif;
+  font-family: "Bitter", serif;
   font-weight: 600;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  margin: 5% 10%;
+}
+
+.title {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
