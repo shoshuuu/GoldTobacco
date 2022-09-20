@@ -6,9 +6,6 @@ import { Link } from "react-router-dom";
 function Nav() {
   return (
     <div className="Nav">
-      <div className="Nav__title">
-        <h3>Табак №1</h3>
-      </div>
       <div className="Nav__item">
         <Link to={"/"} className="Nav__item__link">
           Главная

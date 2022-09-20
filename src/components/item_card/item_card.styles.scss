@@ -1,3 +1,43 @@
-.Item_card {
-  max-width: 25%;
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+.ItemCard {
+  width: 25%;
+  padding: 1vw;
+  &__container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    background-image: url("../../miscellaneous/images/PaperTexture.webp");
+    padding: 1vw;
+    &__image {
+      width: 90%;
+      height: auto;
+      margin: 1vw 0;
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    &__learn_more {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: $background;
+      color: $text-color;
+      transition: all 0.3s;
+      text-align: center;
+      &:hover {
+        color: $text-focus;
+      }
+    }
+    &__title {
+      margin: 1vw;
+    }
+    &__title,
+    &__link,
+    &__price,
+    &__learn_more {
+      text-align: center;
+    }
+  }
 }

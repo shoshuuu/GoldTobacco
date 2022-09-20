@@ -4,16 +4,16 @@ $background: #312e2b;
 
 .Nav {
   display: flex;
-  //grid-template-rows: repeat(6, minmax(16.8vh, auto)) auto;
   background: $background;
-  //height: 100%;
+  justify-content: center;
+  min-height: 5vh;
 
-  &__title,
   &__item {
-    padding-left: 3vw;
+    margin: 15px 2vw;
     align-items: center;
     transition: 0.3s;
     display: flex;
+    font-size: 1.5vw;
 
     &__button {
       a {
@@ -22,29 +22,22 @@ $background: #312e2b;
       }
     }
 
-    h3 {
-      color: $text-color;
-    }
-
     &__link {
       text-decoration: none;
       color: $text-color;
+      transition: color 0.5s;
 
       &:hover {
         color: $text-focus;
       }
     }
   }
+}
 
-  @media screen and (max-width: 900px) {
-    &__title,
+@media (max-width: 700px) {
+  .Nav {
     &__item {
-      padding-left: 4.5vw;
-    }
-  }
-  &__item {
-    &:hover {
-      background: lighten($background, 4);
+      font-size: 2vw;
     }
   }
 }

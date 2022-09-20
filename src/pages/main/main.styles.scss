@@ -1,24 +1,18 @@
-.banner {
-  height: 400px;
-  width: auto;
-  background-image: url("../../miscellaneous/images/Banner.png");
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+
 .Main {
   &__title {
     display: grid;
     place-items: center;
     &__text {
       width: 36ch;
-      animation: typing 4s steps(37), blink 0.5s step-end infinite alternate;
+      animation: typing 3s steps(37), blink 0.3s step-end infinite alternate;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 3px solid;
-      font-size: calc(3.5vw);
+      border-right: 0.3vw solid;
+      font-size: 2.8vw;
 
       @keyframes typing {
         from {
@@ -32,18 +26,84 @@
         }
       }
     }
-    &__info {
-      display: block;
-      padding: 10px;
-      background-color: #ffffff;
-      font-size: calc(2vw);
+  }
+  &__images {
+    display: flex;
+    justify-content: space-around;
+    img {
+      width: 6vw;
     }
   }
 
-  .dash {
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    margin: 10px auto;
+  &__banner {
+    margin: 2vw 0;
+    position: relative;
+    height: 30vw;
+    &__image {
+      position: absolute;
+      left: -5vw;
+      width: 100vw;
+      height: 30vw;
+      object-fit: cover;
+      overflow-x: hidden;
+    }
+    &__text {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      margin: 0 40px;
+    }
+  }
+  &__lookup {
+    padding: 1vw 2vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &__details {
+      margin-left: 5vw;
+      padding: 20px;
+      font-size: 1.5vw;
+      ul {
+        display: flex;
+        flex-flow: column nowrap;
+        list-style: none;
+        li {
+          padding-top: 5px;
+        }
+      }
+    }
+    img {
+      height: 20vw;
+      width: auto;
+    }
+  }
+
+  &__popular {
+    h2 {
+      display: block;
+      text-align: center;
+      font-size: calc(2vw + 10px);
+      margin: 1vw 0;
+    }
+
+    &__tobaccos,
+    &__accessories {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Main {
+    &__lookup {
+      img {
+        width: 30%;
+        height: auto;
+      }
+      &__details {
+        font-size: 2.5vw;
+      }
+    }
   }
 }

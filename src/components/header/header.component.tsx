@@ -1,12 +1,10 @@
-import { useState } from "react";
 import "./header.styles.scss";
 import LightPhoneIcon from "../../miscellaneous/icons/light phone icon.svg";
 import LightMailIcon from "../../miscellaneous/icons/light mail icon.svg";
 import Cart from "../../miscellaneous/icons/cart.svg";
+import { Link } from "react-router-dom";
 
-export default function Header() {
-  const [total, setTotal] = useState(15000);
-
+export default function Header(props: { cartValue: number }) {
   return (
     <header className="Header">
       <div className="Header__main">
@@ -48,10 +46,10 @@ export default function Header() {
       </div>
 
       <div className="Header__cart">
-        <a href="#">
+        <Link to="/cart">
           <img src={Cart} alt="Корзина" className="Header__cart__icon " />
-        </a>
-        <p className="Header__cart__total">{total},00 ₽</p>
+        </Link>
+        <p className="Header__cart__total">{},00 ₽</p>
       </div>
     </header>
   );

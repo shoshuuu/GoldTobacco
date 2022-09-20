@@ -4,15 +4,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50vw;
   width: 100vw;
-  background-size: cover;
   background-image: url("../../miscellaneous/images/footer-image-transformed.jpeg");
+  background-size: cover;
   overflow: hidden;
   &__info {
-    height: 35vw;
+    height: 25vw;
     width: 60%;
     padding: 30px;
+    margin-top: -20vw;
     display: grid;
     justify-items: center;
     grid-template-columns: 1.5fr repeat(2, 1fr);

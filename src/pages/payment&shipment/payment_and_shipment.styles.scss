@@ -1,7 +1,39 @@
 .Payship {
-  &__rule {
-    i {
-      font-size: larger;
+  h1 {
+    font-size: 2.8vw;
+    text-align: center;
+    margin: 1vw;
+  }
+  &__rules {
+    display: flex;
+    flex-flow: row wrap;
+    &__rule {
+      display: flex;
+      padding: 2vw;
+      width: 50%;
+      justify-content: center;
+      font-size: 1.5vw;
+      line-height: 2.5vw;
+      &:nth-child(1) {
+        justify-content: flex-start;
+        width: 30%;
+      }
+      &:nth-child(2) {
+        align-items: center;
+        width: 70%;
+      }
+      img {
+        width: 20vw;
+        object-fit: cover;
+      }
+      p {
+        margin-top: 10px;
+
+        font-weight: 500;
+      }
+      h2 {
+        line-height: 3vw;
+      }
     }
   }
 }

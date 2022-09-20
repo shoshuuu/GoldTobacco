@@ -11,10 +11,12 @@
     align-items: center;
 
     &__title {
+      transition: all 0.5s;
       margin-left: 1vw;
       font-size: 2vw;
     }
     &__logo {
+      transition: all 0.5s;
       width: 10vw;
       height: auto;
     }
@@ -65,8 +67,8 @@
   height: auto;
 }
 
-@media screen and (max-width: 600px) {
-  .header {
+@media screen and (max-width: 700px) {
+  .Header {
     &__main {
       display: flex;
       flex-direction: row wrap;
