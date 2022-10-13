@@ -1,0 +1,28 @@
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+.CartList {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 5vw;
+  &__container {
+    margin: 1px;
+  }
+  &__sidebar {
+    margin-left: 4vw;
+    &__checkout {
+      display: block;
+      background-color: $background;
+      color: $text-color;
+      transition: all 0.3s;
+      text-align: center;
+      margin-top: 2vw;
+      padding: 1.5vw;
+
+      font-size: 2vw;
+      &:hover {
+        color: $text-focus;
+      }
+    }
+  }
+}

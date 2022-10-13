@@ -1,0 +1,37 @@
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+.CartItem {
+  margin-bottom: 3vw;
+  padding: 2vw;
+  background-image: url("../../miscellaneous/images/PaperTexture.webp");
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+  &__title {
+    margin-bottom: 2vw;
+  }
+  &__container {
+    height: 30%;
+    display: flex;
+    align-items: center;
+    &__image {
+      width: 20vw;
+      height: 20vw;
+      object-fit: cover;
+      margin-right: 2vw;
+    }
+  }
+  &__delete {
+    background-color: $background;
+    color: $text-color;
+    transition: all 0.3s;
+    text-align: center;
+    padding: 1vw;
+    margin-left: 1vw;
+    font-size: 1.5vw;
+    &:hover {
+      color: $text-focus;
+    }
+  }
+}

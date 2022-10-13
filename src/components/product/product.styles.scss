@@ -1,0 +1,57 @@
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+.Product {
+  width: 25%;
+
+  padding: 1vw;
+  &__container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("../../miscellaneous/images/PaperTexture.webp");
+    padding: 1vw;
+    &__image {
+      width: 90%;
+      object-fit: cover;
+      height: 100%;
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    &__image_container {
+      width: 100%;
+      height: 18vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2vw 0;
+    }
+    &__learn_more {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: $background;
+      color: $text-color;
+      transition: all 0.3s;
+      text-align: center;
+      &:hover {
+        color: $text-focus;
+      }
+    }
+    &__title {
+      display: flex !important;
+      font-size: 2vw !important;
+      width: 100%;
+      justify-content: center;
+    }
+    &__title,
+    &__link,
+    &__price,
+    &__learn_more {
+      text-align: center !important;
+    }
+  }
+}

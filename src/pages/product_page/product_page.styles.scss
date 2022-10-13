@@ -1,0 +1,72 @@
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+
+.ProductPage {
+  margin: 5vw 20vw;
+  padding: 3vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../miscellaneous/images/PaperTexture.webp");
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3vw;
+  }
+  &__image {
+    width: 20vw;
+    height: auto;
+    object-fit: cover;
+  }
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 3vw 0 0 0;
+    &__image {
+      width: 20vw;
+      height: auto;
+      object-fit: cover;
+    }
+
+    &__price {
+      font-size: 3vw;
+      &__limit {
+        font-size: 2.5vw;
+      }
+    }
+    &__quantity {
+      width: 40%;
+    }
+
+    &__description {
+      margin: auto 2vw;
+      font-size: 2vw;
+    }
+    &__confirm {
+      background-color: $background;
+      color: $text-color;
+      transition: all 0.3s;
+      text-align: center;
+      padding: 2vw;
+      margin-top: 1vw;
+      font-size: 2vw;
+      &:hover {
+        color: $text-focus;
+      }
+    }
+  }
+  &__add_to_cart {
+    display: flex;
+    flex-direction: column;
+  }
+}
+#price {
+  flex-direction: column;
+  margin-bottom: 2vw;
+}

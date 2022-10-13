@@ -1,0 +1,43 @@
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+
+.Nav {
+  display: flex;
+  background: $background;
+  justify-content: center;
+  min-height: 5vh;
+
+  &__item {
+    margin: 15px 2vw;
+    align-items: center;
+    transition: 0.3s;
+    display: flex;
+    font-size: 1.5vw;
+
+    &__button {
+      a {
+        display: block;
+        width: 20px;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      color: $text-color;
+      transition: color 0.5s;
+
+      &:hover {
+        color: $text-focus;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .Nav {
+    &__item {
+      font-size: 2vw;
+    }
+  }
+}

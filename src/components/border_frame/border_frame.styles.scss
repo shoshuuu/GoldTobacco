@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&display=swap");
+.border {
+  background-image: url("../../miscellaneous/images/PaperTexture.webp");
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  &__mid {
+    position: relative;
+    padding: 3vw 2vw;
+    display: flex;
+    align-items: center;
+  }
+}
+.corner {
+  position: absolute;
+  width: 10vw;
+  padding: 4px;
+  &:nth-child(1) {
+    transform: rotate(180deg);
+  }
+  &:nth-child(2) {
+    transform: rotate(-90deg);
+  }
+  &:nth-child(3) {
+    transform: rotate(0);
+  }
+  &:nth-child(4) {
+    transform: rotate(90deg);
+  }
+}
+.top {
+  top: 0;
+}
+.bottom {
+  bottom: 0;
+}
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
