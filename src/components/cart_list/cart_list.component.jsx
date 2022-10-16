@@ -7,7 +7,7 @@ import "./cart_list.styles.scss";
 export class CartList extends Component {
   render() {
     let localCart = JSON.parse(localStorage.getItem("cart"));
-    if (localCart.length != 0) {
+    if (localCart.length !== 0) {
       return (
         <div className="CartList">
           <div className="CartList__container">

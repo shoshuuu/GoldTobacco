@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import "./border_frame.styles.scss";
 
 function BorderFrame(props) {
@@ -8,19 +7,19 @@ function BorderFrame(props) {
         <div className="border__mid">
           <img
             className="corner top left"
-            src={require("../../miscellaneous/images/border 1.png")}
+            alt="" src={require("../../miscellaneous/images/border 1.png")}
           ></img>
           <img
             className="corner top right"
-            src={require("../../miscellaneous/images/border 1.png")}
+            alt="" src={require("../../miscellaneous/images/border 1.png")}
           ></img>
           <img
             className="corner bottom right"
-            src={require("../../miscellaneous/images/border 1.png")}
+            alt="" src={require("../../miscellaneous/images/border 1.png")}
           ></img>
           <img
             className="corner bottom left"
-            src={require("../../miscellaneous/images/border 1.png")}
+            alt="" src={require("../../miscellaneous/images/border 1.png")}
           ></img>
 
           {props.child}

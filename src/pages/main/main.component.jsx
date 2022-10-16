@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BorderFrame from "../../components/border_frame/border_frame.component";
-import Footer from "../../components/footer/footer.component";
-import Header from "../../components/header/header.component";
-import Product from "../../components/product/product.component";
 import { ProductList } from "../../components/product_list/product_list.component";
 
 import "./main.styles.scss";
@@ -13,13 +10,13 @@ function Main() {
     <div className="Main">
       <div className="page">
         <div className="Main__images">
-          <img src={require("../../miscellaneous/images/pipe1.jpeg")} />
+          <img alt="" src={require("../../miscellaneous/images/pipe1.jpeg")} />
           <div className="Main__title">
             <p className="Main__title__text">
               РАЗВЕСНОЙ ТАБАК С ДОСТАВКОЙ ПО РОССИИ
             </p>
           </div>
-          <img src={require("../../miscellaneous/images/pipe2.jpeg")} />
+          <img alt="" src={require("../../miscellaneous/images/pipe2.jpeg")} />
         </div>
 
         <div className="dash"></div>
@@ -27,6 +24,7 @@ function Main() {
 
         <div className="Main__banner">
           <img
+            alt=""
             src={require("../../miscellaneous/banner images/banner4.png")}
             className="Main__banner__image"
           />
@@ -51,7 +49,10 @@ function Main() {
         </div>
 
         <div className="Main__lookup">
-          <img src={require("../../miscellaneous/images/person smoking.png")} />{" "}
+          <img
+            alt=""
+            src={require("../../miscellaneous/images/person smoking.png")}
+          />{" "}
           <div className="Main__lookup__details">
             <h2>
               Весь ассортимент смотрите в разделах{" "}
@@ -66,7 +67,8 @@ function Main() {
             </h2>
             <ul>
               <li>
-                Доставка по России - транспортными компаниями и почтой России.
+                Доставка по России - транспортными компаниями, почтой России и
+                самовывозом.
               </li>
               <li>Минимальный вес табака для заказа 0,2 кг.</li>
               <li>Общая минимальная сумма заказа 500 руб.</li>

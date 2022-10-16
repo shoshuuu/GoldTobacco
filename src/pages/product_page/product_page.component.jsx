@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { addToCart } from "../../helpers/cart/addToCart";
@@ -21,7 +21,7 @@ export function ProductPage() {
     if (localCart) setCart(localCart);
   }, []);
 
-  if (data.product.categories[0].name == "Табак") {
+  if (data.product.categories[0].name === "Табак") {
     return (
       <div className="ProductPage">
         <h2 className="ProductPage__title">{data.product.name}</h2>

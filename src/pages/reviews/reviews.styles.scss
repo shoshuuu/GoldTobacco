@@ -1,0 +1,78 @@
+$text-color: #b4a28f;
+$text-focus: #ebe1c0;
+$background: #312e2b;
+.Reviews {
+  padding: 3vw 5vw;
+  &__label {
+    display: block;
+    text-align: center;
+    margin: 1vw 0;
+    font-size: 2vw;
+  }
+  &__title {
+    font-size: 3vw;
+    text-align: center;
+    margin-bottom: 2vw;
+  }
+  &__input {
+    display: block;
+    text-align: center;
+    &__text {
+      font-family: "Bitter", serif;
+      padding: 1vw;
+      border-radius: 10px;
+      width: 40vw;
+    }
+  }
+  &__textarea {
+    padding: 1vw;
+    border-radius: 10px;
+    width: 40vw;
+    height: 10vw;
+    font-family: "Bitter", serif;
+    resize: none;
+  }
+  &__review {
+    padding: 0vw 5vw;
+    display: flex;
+    flex-direction: column;
+    min-width: 30vw;
+    margin: 5vw auto 0 auto;
+    &__name {
+      font-size: 2vw;
+    }
+    &__content {
+      font-size: 2vw;
+      border-left: 10px solid #ccc;
+      margin: 1em 10px;
+      padding: 0.5em 10px;
+    }
+    &__date {
+      font-size: 1.5vw;
+    }
+  }
+
+  &__submit {
+    border: none;
+    padding: 1vw;
+    display: flex;
+    border-radius: 10px;
+    text-align: center;
+    font-family: "Bitter", serif;
+    font-weight: 800;
+    font-size: 2vw;
+
+    transition: all 0.3s;
+    color: $text-color;
+    &:hover {
+      background-color: $background;
+      color: #ebe1c0;
+    }
+    &__container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 2vw;
+    }
+  }
+}

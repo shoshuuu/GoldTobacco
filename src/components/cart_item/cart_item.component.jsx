@@ -6,11 +6,11 @@ import deleteFromCart from "../../helpers/cart/deleteFromCart.js";
 
 export function CartItem(props) {
   const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(0);
+  //const [quantity, setQuantity] = useState(0);
 
   let localCart = localStorage.getItem("cart");
   const handleChange = (event) => {
-    setQuantity(event.target.value);
+    //setQuantity(event.target.value);
   };
   useEffect(() => {
     localCart = JSON.parse(localCart);

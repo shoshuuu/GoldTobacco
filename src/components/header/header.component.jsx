@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Main from "../../pages/main/main.component";
 import getTotal from "../../helpers/cart/getTotal";
 
+
 export default function Header() {
   let localCart = JSON.parse(localStorage.getItem("cart"));
 

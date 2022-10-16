@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import ProductPage from "../../pages/product_page/product_page.component";
 import "./product.styles.scss";
 
 export function Product(props) {
-  if (props.type == "Табак") {
+  if (props.type === "Табак") {
     return (
       <div className="Product" key={props.id}>
         <div className="Product__container">
@@ -14,7 +13,11 @@ export function Product(props) {
             state={{ product: props.product }}
             className="Product__container__image_container"
           >
-            <img src={props.image} className="Product__container__image" />
+            <img
+              alt=""
+              src={props.image}
+              className="Product__container__image"
+            />
           </Link>
           <p className="Product__container__price">
             Цена: <b>{props.price},00₽ за 1 кг.</b>
@@ -39,7 +42,11 @@ export function Product(props) {
             state={{ product: props.product }}
             className="Product__container__image_container"
           >
-            <img src={props.image} className="Product__container__image" />
+            <img
+              alt=""
+              src={props.image}
+              className="Product__container__image"
+            />
           </Link>
           <p className="Product__container__price">
             Цена: <b>{props.price},00₽ за 1 кг.</b>

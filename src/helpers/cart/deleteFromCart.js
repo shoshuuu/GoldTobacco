@@ -8,7 +8,7 @@ export default function deleteFromCart(item, cart, setCart) {
   console.log(cartCopy);
 
   const index = cartCopy.findIndex(
-    (element) => element.product.name == item.product.name
+    (element) => element.product.name === item.product.name
   );
   console.log(index);
   if (index > -1) {

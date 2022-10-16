@@ -9,7 +9,7 @@ import React, { Component } from "react";
  * @returns array filtered by type
  */
 export function getProductsOfType(array, type) {
-  return array.filter((el) => el.categories[0].name == type);
+  return array.filter((el) => el.categories[0].name === type);
 }
 export class ProductList extends Component {
   state = {
@@ -33,7 +33,7 @@ export class ProductList extends Component {
   render() {
     //НА ВСЕХ ТОВАРАХ ДОЛЖНА БЫТЬ КАРТИНКА
     if (this.state.isLoaded) {
-      if (this.state.products == undefined) {
+      if (this.state.products === undefined) {
         return <div className="loading">Товары загружаются...</div>;
       } else {
         let tobaccos_array = getProductsOfType(
@@ -44,7 +44,7 @@ export class ProductList extends Component {
           <div className="ProductList">
             <div className="gallery">
               {tobaccos_array.map((product) => {
-                if (product.images == undefined) {
+                if (product.images === undefined) {
                   return <div key={product.id}></div>;
                 } else {
                   return (

@@ -1,5 +1,4 @@
 import "./nav.styles.scss";
-import Banner1 from "../../miscellaneous/banner images/banner1.jpg";
 
 import { Link } from "react-router-dom";
 

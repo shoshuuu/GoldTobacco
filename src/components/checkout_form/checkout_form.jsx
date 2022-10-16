@@ -1,28 +1,55 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router";
-import $ from "jquery";
-import "jquery-mask-plugin/dist/jquery.mask.min.js";
-import { useEffect } from "react";
-import { WooCommerce } from "../../helpers/WooCommerceAPI";
-import refreshToken from "../../helpers/jwt";
+import React, { useState, useEffect } from "react";
 import url from "../../../package.json";
-
-$(function () {
-  //2. Получить элемент, к которому необходимо добавить маску
-  $("#phone").mask("+7(999) 999-9999");
-});
+import "./checkout_form.styles.scss";
+import axios from "axios";
+import axiosRetry from "axios-retry";
+import JWTConfig from "../../helpers/jwt";
 
 export function CheckoutForm() {
+  const [isLoading, setLoading] = useState(true);
+  const [token, setToken] = useState({ token: {}, isLoaded: false });
+  const [error, setError] = useState();
+  const [select, setSelect] = useState();
+  const [total, setTotal] = useState();
+
+  const localCart = JSON.parse(localStorage.getItem("cart"));
+
+  const IDarray = [];
+  localCart.map((item) =>
+    IDarray.push({ product_id: item.product.id, quantity: item.quantity })
+  );
+
+  useEffect(() => {
+    let i = 0;
+    localCart.map((item) => {
+      i += item.quantity * item.product.price;
+    });
+    setTotal(i);
+    console.log(localCart);
+    axios(JWTConfig())
+      .then((response) => {
+        setToken({ token: response.data, isLoaded: true });
+        setLoading(false);
+      })
+      .catch((error) => setError(error));
+  }, []);
   /**
    * @param {Event} event
-   */
+   **/
+  const handleChange = (event) => {
+    setSelect({ selectValue: error.target.value });
+  };
+
+  /**
+   * @param {Event} event
+   **/
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = {
+    const data = JSON.stringify({
       payment_method: "bacs",
       payment_method_title: "Direct Bank Transfer",
-      set_paid: true,
+      set_paid: false,
       billing: {
         first_name: event.target.firstName.value,
         last_name: event.target.lastName.value,
@@ -45,82 +72,162 @@ export function CheckoutForm() {
         postcode: event.target.postcode.value,
         country: "RU",
       },
-      line_items: JSON.parse(localStorage.getItem("cart")),
+      line__items: IDarray,
 
-      shipping_lines: [{}],
+      shipping_lines: {
+        method_id: event.target.select.value,
+        method_title: event.target.select.value,
+        total: `${total}.00`,
+      },
+    });
+
+    const config = {
+      method: "post",
+      url: url.proxy + "/wp-json/wc/v3/orders",
+      headers: {
+        "Content-Type" : "application/json",
+        Authorization: "Bearer " + token.token.token,
+      },
+      data: data,
     };
-
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "Authorization",
-      "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbmFzdGFzZWkuYmVnZXQudGVjaCIsImlhdCI6MTY2NTQyNzIzOCwibmJmIjoxNjY1NDI3MjM4LCJleHAiOjE2NjYwMzIwMzgsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.EH-QvDw83brT2WlHD4Vg6qiG2NvTLE1r1y4HpsNJ7jY"
-    );
-
-    let raw = JSON.stringify(data);
-    let requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "manual",
-    };
-    fetch(url.proxy + "/wp-json/wc/v2/orders", data, requestOptions)
-      .then((response) => {
+    console.log(data);
+    console.log(config);
+    axios(config)
+      .then(function (response) {
         console.log(response.data);
       })
-      .catch((error) => {
+      .catch(function (error) {
         console.log(error);
       });
-  };
+    // console.log(token.token.token);
+    // let myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
+    // myHeaders.append("Authorization", `Bearer ${token.token.token}`);
 
-  useEffect(() => {
-    $("input[name=phone]").mask("+7 (000) 000-00-00", {
-      placeholder: "+7 (___) ___-__-__",
-    });
-    $("input[name=postcode]").mask("000000");
-  });
+    // let raw = JSON.stringify(data);
+    // let requestOptions = {
+    //   method: "POST",
+    //   headers: myHeaders,
+    //   body: raw,
+    //   redirect: "manual",
+    //   Authorization: `Bearer ${token.token.token}`,
+    // };
+
+    // console.log(requestOptions);
+
+    // axios
+    //   .post(url.proxy + "/wp-son/wc/v3/orders", requestOptions)
+    //   .then((response) => console.log(response.data))
+    //   .catch((error) => console.log(error));
+  };
 
   return (
     <div className="CheckoutForm">
-      <h1>ДОСТАВКА ОСУЩЕСТВЛЯЕТСЯ ТОЛЬКО ПО РОССИИ</h1>
-      <form id="form" name="form" onSubmit={handleSubmit}>
-        <div className="CheckoutForm_item">
-          <label htmlFor="FirstName">Имя</label>
-          <input type="text" name="firstName" required />
+      <h1 className="CheckoutForm__title">
+        Доставка осуществляется только по России
+      </h1>
+      <form
+        id="form"
+        name="form"
+        onSubmit={handleSubmit}
+        className="CheckoutForm__form"
+      >
+        <div className="CheckoutForm__item">
+          <label htmlFor="FirstName" className="CheckoutForm__label">
+            Имя
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            required
+            className="CheckoutForm__input"
+          />
         </div>
 
-        <div className="CheckoutForm_item">
-          <label htmlFor="lastName">Фамилия</label>
-          <input type="text" name="lastName" required />
+        <div className="CheckoutForm__item">
+          <label htmlFor="lastName" className="CheckoutForm__label">
+            Фамилия
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            required
+            className="CheckoutForm__input"
+          />
         </div>
-        <div className="CheckoutForm_item">
-          <label htmlFor="city">Город</label>
-          <input type="text" name="city" required />
+        <div className="CheckoutForm__item">
+          <label htmlFor="city" className="CheckoutForm__label">
+            Город
+          </label>
+          <input
+            className="CheckoutForm__input"
+            type="text"
+            name="city"
+            required
+          />
         </div>
-        <div className="CheckoutForm_item">
-          <label htmlFor="adress">Адрес</label>
-          <input type="text" name="adress" required />
+        <div className="CheckoutForm__item">
+          <label htmlFor="adress" className="CheckoutForm__label">
+            Адрес
+          </label>
+          <input
+            className="CheckoutForm__input"
+            type="text"
+            name="adress"
+            required
+          />
         </div>
-        <div className="CheckoutForm_item">
-          <label htmlFor="postcode">Почтовый индекс</label>
-          <input type="text" name="postcode" required />
+        <div className="CheckoutForm__item">
+          <label htmlFor="postcode" className="CheckoutForm__label">
+            Почтовый индекс
+          </label>
+          <input
+            className="CheckoutForm__input"
+            type="text"
+            name="postcode"
+            required
+          />
         </div>
-        <div className="CheckoutForm_item">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" required />
+        <div className="CheckoutForm__item">
+          <label htmlFor="email" className="CheckoutForm__label">
+            Email
+          </label>
+          <input
+            className="CheckoutForm__input"
+            type="email"
+            name="email"
+            required
+          />
         </div>
-        <div className="CheckoutForm_item">
-          <label htmlFor="phone">Телефон</label>
-          <input type="tel" name="phone" id="phone" required />
+        <div className="CheckoutForm__item">
+          <label htmlFor="phone" className="CheckoutForm__label">
+            Телефон
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            required
+            className="CheckoutForm__input"
+          />
         </div>
-        <input type="submit" value="Оформить заказ" />
+        <div className="CheckoutForm__item">
+          <label htmlFor="select" className="CheckoutForm__label">
+            Доставка
+          </label>
+          <select className="CheckoutForm__select" name="select">
+            <option value="SDEK">СДЭК по предоплате</option>
+            <option value="COD">Почтой наложенным платежом</option>
+            <option value="prepayment">Почтой по предоплате</option>
+            <option value="pickup">Самовывоз</option>
+          </select>
+        </div>
 
-        <select>
-          <option value="SDEK">СДЭК по предоплате</option>
-          <option value="COD">Почтой наложенным платежом</option>
-          <option value="prepayment">Почтой по предоплате</option>
-          <option value="pickup">Самовывоз</option>
-        </select>
+        <input
+          className="CheckoutForm__submit"
+          type="submit"
+          value="Оформить заказ"
+        />
       </form>
     </div>
   );

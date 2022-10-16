@@ -1,5 +1,7 @@
-import React, { createContext, useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import "./App.styles.scss";
 import Nav from "./components/nav/nav.component";
 import Header from "./components/header/header.component";
 import RawTobaccos from "./pages/raw_tobaccos/raw_tobaccos.component";
@@ -7,10 +9,6 @@ import Main from "./pages/main/main.component";
 import Footer from "./components/footer/footer.component";
 import PaymentAndShipment from "./pages/payment&shipment/payment_and_shipment.component";
 import { Reviews } from "./pages/reviews/reviews.component";
-import "./App.styles.scss";
-import refreshToken from "./helpers/jwt";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductPage from "./pages/product_page/product_page.component";
 import Cart from "./pages/cart/cart.component";
 import { Accessories } from "./pages/accessories/accessories.component";
@@ -20,7 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      token: []
+      token: [],
     };
   }
   componentDidMount() {
