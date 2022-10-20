@@ -1,6 +1,11 @@
-export function addToCart(item, cart, setCart) {
+export function addToCart(item, cart) {
   //create a copy of our cart state, avoid overwritting existing state
-  let cartCopy = [...cart];
+  let cartCopy;
+  if (cart === null || cart === undefined) {
+    cartCopy = [];
+  } else {
+    cartCopy = [...cart];
+  }
 
   //assuming we have an id field in our item
   let id = item.product.id;
@@ -9,29 +14,29 @@ export function addToCart(item, cart, setCart) {
     return product.product.id === id;
   }
 
-  debugger;
-  console.log(id);
-  console.log(cartCopy.find(findProduct));
-
   //look for item in cart array
   let existingItem = cartCopy.find(findProduct);
-
+  debugger;
   //if item already exists
   if (existingItem) {
-    // console.log(Number(existingItem.quantity));
-    // console.log(Number(item.quantity));
-    // console.log(Number(existingItem.quantity) + Number(item.quantity));
-    existingItem.quantity =
-      Number(existingItem.quantity) + Number(item.quantity); //update item
+    let existingQuantity = parseFloat(existingItem.quantity);
+    let newQuantity = parseFloat(item.quantity);
+    // console.log(existingQuantity);
+    // console.log(newQuantity);
+    // console.log(existingQuantity + newQuantity);
+    existingItem.quantity = parseFloat(
+      Number(existingQuantity.toFixed(2)) + Number(newQuantity.toFixed(2))
+    ).toFixed(2);
+    // console.log(existingItem.quantity);
   } else {
     //if item doesn't exist, simply add it
+
     cartCopy.push(item);
   }
-
   //update app state
-  setCart(cartCopy);
+  //setCart(cartCopy);
+  console.log(cartCopy);
 
   //make cart a string and store in local space
-  let stringCart = JSON.stringify(cartCopy);
-  localStorage.setItem("cart", stringCart);
+  return cartCopy;
 }

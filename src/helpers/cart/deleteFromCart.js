@@ -1,8 +1,13 @@
-export default function deleteFromCart(item, cart, setCart) {
+export default function deleteFromCart(item, cart) {
   //create a copy of our cart state, avoid overwritting existing state
-  let cartCopy = [...cart];
-
   debugger;
+  let cartCopy;
+  if (cart === null || cart === undefined) {
+    cartCopy = [];
+  } else {
+    cartCopy = [...cart];
+  }
+
   //assuming we have an id field in our item
   console.log(item);
   console.log(cartCopy);
@@ -17,11 +22,17 @@ export default function deleteFromCart(item, cart, setCart) {
   }
 
   console.log(cartCopy);
+  
+  if (cartCopy) {
+    return cartCopy;
+  } else {
+    return null;
+  }
 
   //update app state
-  setCart(cartCopy);
+  // setCart(cartCopy);
 
-  //make cart a string and store in local space
-  let stringCart = JSON.stringify(cartCopy);
-  localStorage.setItem("cart", stringCart);
+  // //make cart a string and store in local space
+  // let stringCart = JSON.stringify(cartCopy);
+  // localStorage.setItem("cart", stringCart);
 }

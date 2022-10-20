@@ -1,4 +1,4 @@
-export function editItem(itemID, amount){
+export function editItem(itemID, amount, cart, setCart) {
   let cartCopy = [...cart];
 
   //find if item exists, just in case
@@ -21,4 +21,4 @@ export function editItem(itemID, amount){
 
   let cartString = JSON.stringify(cartCopy);
   localStorage.setItem("cart", cartString);
-};
+}

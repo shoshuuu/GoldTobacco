@@ -2,24 +2,33 @@ import React, { useState, useEffect } from "react";
 import url from "../../../package.json";
 import "./checkout_form.styles.scss";
 import axios from "axios";
-import axiosRetry from "axios-retry";
 import { WooCommerce } from "../../helpers/WooCommerceAPI";
 import JWTConfig from "../../helpers/jwt";
+import { useNavigate } from "react-router-dom";
 
 export function CheckoutForm() {
-  const [isLoading, setLoading] = useState(true);
   const [token, setToken] = useState({ token: {}, isLoaded: false });
-  const [error, setError] = useState();
-  const [select, setSelect] = useState();
+  const [error, setError] = useState(false);
   const [total, setTotal] = useState();
 
+  let navigate = useNavigate();
   const localCart = JSON.parse(localStorage.getItem("cart"));
 
   const IDarray = [];
-  localCart.map((item) =>
-    IDarray.push({ product_id: item.product.id, quantity: item.quantity })
-  );
-  console.log(IDarray);
+  localCart.map((item) => {
+    console.log(item.product.categories[0].name);
+    if (item.product.categories[0].name === "Табак") {
+      IDarray.push({
+        product_id: item.product.id,
+        quantity: item.quantity * 1000,
+      });
+    } else {
+      IDarray.push({
+        product_id: item.product.id,
+        quantity: item.quantity,
+      });
+    }
+  });
 
   useEffect(() => {
     let i = 0;
@@ -27,21 +36,12 @@ export function CheckoutForm() {
       i += item.quantity * item.product.price;
     });
     setTotal(i);
-    console.log(localCart);
     axios(JWTConfig())
       .then((response) => {
         setToken({ token: response.data, isLoaded: true });
-        setLoading(false);
       })
-      .catch((error) => setError(error));
+      .catch((error) => setError(true));
   }, []);
-  /**
-   * @param {Event} event
-   **/
-  const handleChange = (event) => {
-    setSelect({ selectValue: error.target.value });
-  };
-
   /**
    * @param {Event} event
    **/
@@ -51,12 +51,17 @@ export function CheckoutForm() {
     const data = {
       payment_method: "bacs",
       payment_method_title: "Direct Bank Transfer",
-      set_paid: false,
+      set_paid: true,
       billing: {
-        first_name: event.target.firstName.value,
-        last_name: event.target.lastName.value,
-        address_1: event.target.adress.value,
-        address_2: "",
+        first_name:
+          event.target.lastName.value +
+          " " +
+          event.target.firstName.value +
+          " " +
+          event.target.fatherName.value,
+        last_name: "",
+        address_1: event.target.adress1.value,
+        address_2: event.target.adress2.value,
         city: event.target.city.value,
         state: "",
         postcode: event.target.postcode.value,
@@ -65,36 +70,47 @@ export function CheckoutForm() {
         phone: event.target.phone.value,
       },
       shipping: {
-        first_name: "ФИО: " + event.target.firstName.value,
-        last_name: " " + event.target.lastName.value,
-        address_1: "Адрес: " + event.target.adress.value,
-        address_2: "",
+        first_name:
+          "ФИО: " +
+          event.target.lastName.value +
+          " " +
+          event.target.firstName.value +
+          " " +
+          event.target.fatherName.value,
+        last_name: " ",
+        address_1: "Адрес: " + event.target.adress1.value,
+        address_2: event.target.adress2.value,
         city: "Город: " + event.target.city.value,
         state: "",
         postcode: "Почтовый индекс: " + event.target.postcode.value,
         country: "RU",
       },
-      line__items: IDarray,
+      line_items: IDarray,
 
       shipping_lines: [
         {
           method_id: event.target.select.value,
           method_title: event.target.select.value,
-          total: `${total}.00`,
+          total: `0.00`,
         },
       ],
     };
 
-    console.log(IDarray);
-    debugger;
     WooCommerce.post("orders", data)
       .then((response) => {
-        console.log(response.data);
+        {
+        }
       })
       .catch((error) => {
-        console.log(error.response.data);
+        setError(error);
       });
 
+    if (error) {
+      navigate("/order-rejected");
+    } else {
+      localStorage.setItem("cart", null);
+      navigate("/order-accepted");
+    }
   };
 
   return (
@@ -132,6 +148,16 @@ export function CheckoutForm() {
           />
         </div>
         <div className="CheckoutForm__item">
+          <label htmlFor="lastName" className="CheckoutForm__label">
+            Отчество (при наличии)
+          </label>
+          <input
+            type="text"
+            name="fatherName"
+            className="CheckoutForm__input"
+          />
+        </div>
+        <div className="CheckoutForm__item">
           <label htmlFor="city" className="CheckoutForm__label">
             Город
           </label>
@@ -143,13 +169,22 @@ export function CheckoutForm() {
           />
         </div>
         <div className="CheckoutForm__item">
-          <label htmlFor="adress" className="CheckoutForm__label">
-            Адрес
+          <label htmlFor="adress1" className="CheckoutForm__label">
+            Улица
           </label>
           <input
             className="CheckoutForm__input"
             type="text"
-            name="adress"
+            name="adress1"
+            required
+          />
+          <label htmlFor="adress2" className="CheckoutForm__label">
+            Дом, квартира
+          </label>
+          <input
+            className="CheckoutForm__input"
+            type="text"
+            name="adress2"
             required
           />
         </div>

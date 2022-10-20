@@ -1,13 +1,12 @@
 import url from "../../package.json";
-import axios from "axios";
 
 export default function JWTConfig() {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
   const data = JSON.stringify({
-    username: "Anastasia",
-    password: "SVo7$jfg0X@zs%dUwK",
+    username: process.env.REACT_APP_INIT_HOST_USERNAME,
+    password: process.env.REACT_APP_INIT_HOST_PASSWORD,
   });
 
   const config = {

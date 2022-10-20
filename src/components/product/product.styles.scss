@@ -3,31 +3,29 @@ $text-focus: #ebe1c0;
 $background: #312e2b;
 .Product {
   width: 25%;
-
   padding: 1vw;
   &__container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     background-image: url("../../miscellaneous/images/PaperTexture.webp");
     padding: 1vw;
     &__image {
       width: 90%;
       object-fit: cover;
-      height: 100%;
+      height: 15vw;
       transition: all 0.3s;
       &:hover {
         transform: scale(1.1);
       }
     }
     &__image_container {
-      width: 100%;
-      height: 18vw;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2vw 0;
+      width: 90%;
+      margin: 2vw 0;
     }
     &__learn_more {
       width: 100%;
@@ -42,16 +40,30 @@ $background: #312e2b;
       }
     }
     &__title {
+      height: 50px;
+      padding: 20px auto;
       display: flex !important;
-      font-size: 2vw !important;
+      font-size: 1vw;
       width: 100%;
       justify-content: center;
+      align-items: center;
     }
     &__title,
     &__link,
     &__price,
-    &__learn_more {
+    &__learn__more {
       text-align: center !important;
+      font-size: 1.5vw;
+      width: 90%;
+    }
+
+    &__price {
+      font-size: 1.5vw;
+      padding: 1vw 0;
     }
   }
+}
+
+.dim {
+  opacity: 50%;
 }

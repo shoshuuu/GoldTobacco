@@ -12,7 +12,7 @@ $background: #312e2b;
     text-align: center;
   }
   &__label {
-    font-size: calc(5px + 1.5vw);
+    font-size: calc(5px + 1vw);
     margin: 0.6vw;
   }
   &__form {
@@ -31,7 +31,7 @@ $background: #312e2b;
   }
   &__select {
     padding: 1vw;
-    font-size: 1vw;
+    font-size: 1.5vw;
     font-family: "Bitter", serif;
     font-weight: 800;
   }
@@ -53,5 +53,35 @@ $background: #312e2b;
       background-color: $background;
       color: #ebe1c0;
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .CheckoutForm {
+    &__label {
+      font-size: calc(5px + 2vw);
+      margin: 0.6vw;
+    }
+    &__form {
+      margin: 1vw;
+      width: 90%;
+    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+    }
+    &__input {
+      padding: 0.6vw;
+      font-size: 2vw;
+    }
+    &__select {
+      padding: 1vw;
+      font-size: 2vw;
+      font-family: "Bitter", serif;
+    }
+  }
+
+  .button {
+    font-size: 4vw;
   }
 }

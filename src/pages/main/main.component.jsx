@@ -71,7 +71,7 @@ function Main() {
                 самовывозом.
               </li>
               <li>Минимальный вес табака для заказа 0,2 кг.</li>
-              <li>Общая минимальная сумма заказа 500 руб.</li>
+              <li>Общий минимальный вес заказа 0,4 кг.</li>
             </ul>
           </div>
         </div>
@@ -83,7 +83,7 @@ function Main() {
           <div className="dash"></div>
           <div className="dash__smaller"></div>
           <div className="Main__popular__tobaccos">
-            <ProductList type="Табак" pagination={10} />
+            <ProductList type="Табак" pagination={7} />
             <Link to="/raw-tobaccos" className="button">
               Смотреть все товары
             </Link>

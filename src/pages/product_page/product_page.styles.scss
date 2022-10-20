@@ -3,8 +3,8 @@ $text-focus: #ebe1c0;
 $background: #312e2b;
 
 .ProductPage {
-  margin: 5vw 20vw;
-  padding: 3vw;
+  margin: 5vw 15vw;
+  // padding: 3vw;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -14,59 +14,66 @@ $background: #312e2b;
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
   &__title {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 2vw auto;
     font-size: 3vw;
   }
   &__image {
-    width: 20vw;
-    height: auto;
+    width: 30vw;
+    height: 30vw;
     object-fit: cover;
   }
   &__container {
+    padding: 0 8vw;
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    margin: 3vw 0 0 0;
+    align-items: center;
     &__image {
-      width: 20vw;
       height: auto;
       object-fit: cover;
+    }
+    &__label {
+      font-size: 3vw;
     }
 
     &__price {
       font-size: 3vw;
-      &__limit {
-        font-size: 2.5vw;
-      }
+      margin-top: 2vw;
+    }
+    &__limit {
+      font-size: 1.5vw;
     }
     &__quantity {
-      width: 40%;
+      font-family: "Bitter", serif;
+      width: 100%;
+      padding: 1vw;
+      font-size: 2vw;
     }
 
     &__description {
-      margin: auto 2vw;
-      font-size: 2vw;
-    }
-    &__confirm {
-      background-color: $background;
-      color: $text-color;
-      transition: all 0.3s;
-      text-align: center;
-      padding: 2vw;
-      margin-top: 1vw;
-      font-size: 2vw;
-      &:hover {
-        color: $text-focus;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      h2 {
+        font-size: 1.5vw;
       }
+      margin-left: 5vw;
+      font-size: 1.8vw;
+    }
+
+    &__confirm {
+      font-size: 3vw !important;
     }
   }
   &__add_to_cart {
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
   }
 }
 #price {
   flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 2vw;
 }

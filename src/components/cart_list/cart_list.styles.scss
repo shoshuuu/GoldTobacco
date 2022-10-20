@@ -9,6 +9,28 @@ $background: #312e2b;
     margin: 1px;
   }
   &__sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__order {
+      width: 100%;
+      padding: 2vw;
+      &__list {
+        list-style: none;
+        &__item {
+          &__name {
+            margin-top: 1vw;
+            font-size: 2vw;
+          }
+          &__total {
+            font-size: 1vw;
+          }
+        }
+      }
+    }
+    &__total {
+      font-size: 2vw;
+    }
     margin-left: 4vw;
     &__checkout {
       display: block;
@@ -17,7 +39,7 @@ $background: #312e2b;
       transition: all 0.3s;
       text-align: center;
       margin-top: 2vw;
-      padding: 1.5vw;
+      padding: 1.5vw 2vw;
 
       font-size: 2vw;
       &:hover {
@@ -25,4 +47,9 @@ $background: #312e2b;
       }
     }
   }
+}
+.cart_empty {
+  margin: 4vw auto;
+  text-align: center;
+  font-size: 2vw;
 }

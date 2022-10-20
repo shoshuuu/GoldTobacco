@@ -43,23 +43,51 @@ body {
   flex-flow: row wrap;
 }
 
+.gallery {
+  .Product {
+    &__container__title {
+      font-size: 1.5vw;
+    }
+    &__container__image {
+      height: 20vw;
+    }
+  }
+}
 @media (min-width: 800px) {
   .gallery {
     .Product {
       width: calc(100% / 3);
+      &__container {
+        &__title {
+          font-size: 2vw;
+        }
+        &__learn__more {
+          font-size: 1.8vw;
+        }
+      }
+      &__container__image {
+        height: 20vw;
+      }
     }
   }
 }
-@media (max-width: 950px) {
+@media (max-width: 800px) {
   .gallery {
     .Product {
       width: 50%;
-      &__container__image_container {
+      &__container {
+        &__title {
+          font-size: 3vw !important;
+        }
+        &__price {
+          font-size: 2.5vw !important;
+        }
+        &__learn__more {
+          font-size: 2.5vw;
+        }
+      }
+      &__container__image {
         height: 30vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2vw 0;
       }
     }
   }
@@ -69,6 +97,14 @@ body {
   .gallery {
     .Product {
       width: 25%;
+      &__container__image {
+        height: 15vw;
+      }
+      &__container {
+        &__title {
+          font-size: 1.5vw;
+        }
+      }
     }
   }
 }
@@ -100,10 +136,44 @@ body {
   border-radius: 50px;
   color: $text-color;
   transition: color 0.5s;
-  padding: 1.5vw 20px;
-  font-size: 3vw;
+  padding: 1vw 2vw;
+  font-size: 2vw;
   margin: 2vw auto;
   &:hover {
     color: $text-focus;
   }
 }
+//
+// .modal {
+//   font-size: 12px;
+// }
+// .modal > .header {
+//   width: 100%;
+//   border-bottom: 1px solid gray;
+//   font-size: 18px;
+//   text-align: center;
+//   padding: 5px;
+// }
+// .modal > .content {
+//   width: 100%;
+//   padding: 10px 5px;
+// }
+// .modal > .actions {
+//   width: 100%;
+//   padding: 10px 5px;
+//   margin: auto;
+//   text-align: center;
+// }
+// .modal > .close {
+//   cursor: pointer;
+//   position: absolute;
+//   display: block;
+//   padding: 2px 5px;
+//   line-height: 20px;
+//   right: -10px;
+//   top: -10px;
+//   font-size: 24px;
+//   background: #ffffff;
+//   border-radius: 18px;
+//   border: 1px solid #cfcece;
+// }

@@ -1,0 +1,26 @@
+.OrderAccepted,
+.OrederRejected {
+  margin: 5vw 20vw;
+  height: 30vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../miscellaneous/images/PaperTexture.webp");
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.title {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  & > h2 {
+    padding: 2vw;
+    font-size: 3vw;
+  }
+  & > p {
+    font-size: 2vw;
+    padding-bottom: 2vw;
+  }
+}
