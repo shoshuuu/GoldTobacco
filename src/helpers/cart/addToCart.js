@@ -1,6 +1,7 @@
 export function addToCart(item, cart) {
   //create a copy of our cart state, avoid overwritting existing state
   let cartCopy;
+  debugger;
   if (cart === null || cart === undefined) {
     cartCopy = [];
   } else {

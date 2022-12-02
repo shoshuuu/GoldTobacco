@@ -9,21 +9,20 @@ import getTotal from "../../helpers/cart/getTotal";
 
 export default function Header() {
   // const [cart, setCart] = useState([{}]);
-  const [total, setTotal] = useState(null);
+  const [total, setTotal] = useState(0);
   const [sum, setSum] = useState(0);
 
-  let localCart;
+  let localCart = JSON.parse(localStorage.getItem("cart"));
 
   useEffect(() => {
-    localCart = JSON.parse(localStorage.getItem("cart"));
     setSum(getTotal(localCart));
     checkIfCartNull();
   }, [sum]);
 
   function checkIfCartNull() {
     if (localCart == null) {
-      setTotal(<p className="Header__cart__total">0,00 ₽</p>);
-    } else setTotal(<p className="Header__cart__total">{sum},00 ₽</p>);
+      setTotal(<p className="Header__cart__total">0.00 ₽</p>);
+    } else setTotal(<p className="Header__cart__total">{sum.toFixed(2)} ₽</p>);
   }
 
   return (
@@ -39,7 +38,7 @@ export default function Header() {
           </Link>
         </div>
 
-        <h1 className="Header__main__title">Золотая Табакерка</h1>
+        <h2 className="Header__main__title">Золотая Табакерка</h2>
       </div>
 
       <div className="Header__contacts">
@@ -62,9 +61,9 @@ export default function Header() {
             alt="Почта"
             className="Header__contacts__mail__icon icon"
           />
-          <a className="Header__contacts__mail__adress">
+          <p className="Header__contacts__mail__adress">
             Nastasystasyfox@yandex.ru
-          </a>
+          </p>
         </div>
       </div>
 

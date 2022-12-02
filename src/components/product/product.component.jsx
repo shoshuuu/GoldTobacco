@@ -11,7 +11,8 @@ export function Product(props) {
 
             <Link className="Product__container__image_container">
               <img
-                alt=""
+                title={props.name}
+                alt={props.name}
                 src={props.image}
                 className="Product__container__image"
               />
@@ -37,7 +38,8 @@ export function Product(props) {
               className="Product__container__image_container"
             >
               <img
-                alt=""
+                title={props.name}
+                alt={props.name}
                 src={props.image}
                 className="Product__container__image"
               />
@@ -46,7 +48,7 @@ export function Product(props) {
               Цена: <b>{props.price * 1000},00₽ за 1 кг.</b>
             </p>
             <Link
-              to={`/raw-tobaccos/${props.id}`}
+              to={`/raw-tobaccos/:${props.id}`}
               state={{ product: props.product }}
               className="Product__container__learn__more button"
             >
@@ -63,7 +65,8 @@ export function Product(props) {
             <h2 className="Product__container__title">{props.name}</h2>
             <Link className="Product__container__image_container">
               <img
-                alt=""
+                title={props.name}
+                alt={props.name}
                 src={props.image}
                 className="Product__container__image"
               />
@@ -71,7 +74,7 @@ export function Product(props) {
             <p className="Product__container__price">
               Цена: <b>{props.price},00₽</b>
             </p>
-            <Link className="Product__container__learn_more button">
+            <Link className="Product__container__learn__more button">
               Нет в наличии
             </Link>
           </div>
@@ -83,12 +86,13 @@ export function Product(props) {
           <div className="Product__container">
             <h2 className="Product__container__title">{props.name}</h2>
             <Link
-              to={`/accessories/${props.id}`}
+              to={`/accessories/:${props.id}`}
               state={{ product: props.product }}
               className="Product__container__image_container"
             >
               <img
-                alt=""
+                title={props.name}
+                alt={props.name}
                 src={props.image}
                 className="Product__container__image"
               />
@@ -99,7 +103,7 @@ export function Product(props) {
             <Link
               to={`/accessories/${props.id}`}
               state={{ product: props.product }}
-              className="Product__container__learn_more button"
+              className="Product__container__learn__more button"
             >
               Подробнее
             </Link>

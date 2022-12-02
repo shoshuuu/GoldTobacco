@@ -64,21 +64,18 @@ export function ProductPage() {
             className="ProductPage__container__confirm button"
             onClick={() => {
               debugger;
-              if (data.product > 0) {
-                const newcart = addToCart(
-                  {
-                    product: data.product,
-                    quantity: quantity,
-                  },
-                  localCart
-                );
-                console.log(newcart);
-                localStorage.setItem("cart", JSON.stringify(newcart));
-                console.log(localStorage.getItem("cart"));
-              } else
-                return (
-                  <span className="error">Вы не можете столько заказать</span>
-                );
+              console.log(data.product);
+              const newcart = addToCart(
+                {
+                  product: data.product,
+                  quantity: quantity,
+                },
+                localCart
+              );
+
+              console.log(newcart);
+              localStorage.setItem("cart", JSON.stringify(newcart));
+              console.log(localStorage.getItem("cart"));
             }}
           >
             Добавить в корзину

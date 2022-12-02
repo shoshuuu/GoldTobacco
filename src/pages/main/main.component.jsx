@@ -12,9 +12,9 @@ function Main() {
         <div className="Main__images">
           <img alt="" src={require("../../miscellaneous/images/pipe1.jpeg")} />
           <div className="Main__title">
-            <p className="Main__title__text">
+            <h1 className="Main__title__text">
               РАЗВЕСНОЙ ТАБАК С ДОСТАВКОЙ ПО РОССИИ
-            </p>
+            </h1>
           </div>
           <img alt="" src={require("../../miscellaneous/images/pipe2.jpeg")} />
         </div>
@@ -24,25 +24,27 @@ function Main() {
 
         <div className="Main__banner">
           <img
-            alt=""
+            title="banner"
+            alt="banner"
             src={require("../../miscellaneous/banner images/banner4.png")}
             className="Main__banner__image"
           />
           <div className="Main__banner__text">
             <BorderFrame
               child={
-                <p
+                <h3
                   style={{
                     textAlign: "center",
                     padding: "2vw 0px",
                     fontSize: "2.5vw",
+                    fontWeight: "lighter",
                   }}
                 >
                   Мы предлагаем купить недорогой развесной табак из Америки,
                   Бразилии, Индии, Аргентины, Кубы и других стран. В наличии
                   есть сорта Берли, Вирджиния, Ориентал, готовые фабричные
                   мешки.
-                </p>
+                </h3>
               }
             ></BorderFrame>
           </div>
@@ -79,7 +81,7 @@ function Main() {
         <div className="Main__popular">
           <div className="dash__smaller"></div>
           <div className="dash"></div>
-          <h2>Популярные товары</h2>
+          <h2 className="Main__popular__title">Популярные товары</h2>
           <div className="dash"></div>
           <div className="dash__smaller"></div>
           <div className="Main__popular__tobaccos">
@@ -90,7 +92,7 @@ function Main() {
           </div>
           <div className="dash"></div>
           <div className="dash__smaller"></div>
-          <h2>Популярные аксессуары</h2>
+          <h2 className="Main__popular__title">Популярные аксессуары</h2>
           <div className="dash__smaller"></div>
           <div className="dash"></div>
           <div className="Main__popular__accessories">

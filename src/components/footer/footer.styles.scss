@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&display=swap");
 
 .Footer {
+  margin-top: 10vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,9 +11,9 @@
   background-size: cover;
   overflow: hidden;
   &__info {
-    height: 25vw;
+    height: 28vw;
     width: 60%;
-    padding: 30px;
+    padding: 20px;
     margin-top: -20vw;
     display: grid;
     justify-items: center;

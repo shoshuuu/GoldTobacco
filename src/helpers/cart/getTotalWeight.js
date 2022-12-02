@@ -6,7 +6,7 @@ export default function getTotalWeight(localCart) {
         total += Number(localCart[i]?.quantity);
       }
     }
-    return total;
+    return total.toFixed(2);
   } else {
     return total;
   }

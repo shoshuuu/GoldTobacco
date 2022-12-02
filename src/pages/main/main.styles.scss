@@ -7,12 +7,13 @@ $background: #312e2b;
     display: grid;
     place-items: center;
     &__text {
+      margin: 0 1vw;
       width: 36ch;
       animation: typing 3s steps(37), blink 0.3s step-end infinite alternate;
       white-space: nowrap;
       overflow: hidden;
       border-right: 0.3vw solid;
-      font-size: 2.8vw;
+      font-size: 3.5vw;
 
       @keyframes typing {
         from {
@@ -63,7 +64,7 @@ $background: #312e2b;
     &__details {
       margin-left: 5vw;
       padding: 20px;
-      font-size: 1.5vw;
+      font-size: 2vw;
       ul {
         display: flex;
         flex-flow: column nowrap;
@@ -80,10 +81,10 @@ $background: #312e2b;
   }
 
   &__popular {
-    h2 {
+    &__title {
       display: block;
       text-align: center;
-      font-size: calc(2vw + 5px);
+      font-size: 4vw;
       margin: 1vw 0;
     }
 

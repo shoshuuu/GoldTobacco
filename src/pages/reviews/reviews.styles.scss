@@ -7,7 +7,7 @@ $background: #312e2b;
     display: block;
     text-align: center;
     margin: 1vw 0;
-    font-size: 2vw;
+    font-size: 2.6vw;
   }
   &__title {
     font-size: 3vw;
@@ -19,6 +19,7 @@ $background: #312e2b;
     text-align: center;
     &__text {
       font-family: "Bitter", serif;
+      font-size: 2vw;
       padding: 1vw;
       border-radius: 10px;
       width: 40vw;
@@ -30,6 +31,7 @@ $background: #312e2b;
     width: 40vw;
     height: 10vw;
     font-family: "Bitter", serif;
+    font-size: 2vw;
     resize: none;
   }
   &__review {
@@ -60,7 +62,7 @@ $background: #312e2b;
     text-align: center;
     font-family: "Bitter", serif;
     font-weight: 800;
-    font-size: 2vw;
+    font-size: 3vw;
 
     transition: all 0.3s;
     color: $text-color;
@@ -75,4 +77,15 @@ $background: #312e2b;
       margin-top: 2vw;
     }
   }
+}
+
+.success {
+  font-size: 2vw;
+  text-align: center;
+  background-color: #ddcbb9;
+  color: #312e2b;
+  height: 10vw;
+  padding: 4vw;
+  margin-bottom: 2vw;
+  border-radius: 2vw;
 }

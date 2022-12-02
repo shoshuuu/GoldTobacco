@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import url from "../../../package.json";
 import "./checkout_form.styles.scss";
 import axios from "axios";
 import { WooCommerce } from "../../helpers/WooCommerceAPI";
@@ -16,7 +15,6 @@ export function CheckoutForm() {
 
   const IDarray = [];
   localCart.map((item) => {
-    console.log(item.product.categories[0].name);
     if (item.product.categories[0].name === "Табак") {
       IDarray.push({
         product_id: item.product.id,
@@ -40,7 +38,7 @@ export function CheckoutForm() {
       .then((response) => {
         setToken({ token: response.data, isLoaded: true });
       })
-      .catch((error) => setError(true));
+      .catch((error) => console.log(error.message));
   }, []);
   /**
    * @param {Event} event
@@ -97,10 +95,7 @@ export function CheckoutForm() {
     };
 
     WooCommerce.post("orders", data)
-      .then((response) => {
-        {
-        }
-      })
+      .then((response) => {})
       .catch((error) => {
         setError(error);
       });

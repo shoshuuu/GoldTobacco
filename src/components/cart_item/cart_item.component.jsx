@@ -1,29 +1,14 @@
-import { React, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { React } from "react";
+import { Link } from "react-router-dom";
 
 import "./cart_item.styles.scss";
 import deleteFromCart from "../../helpers/cart/deleteFromCart.js";
 export function CartItem(props) {
-  const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(0);
-
   let localCart = JSON.parse(localStorage.getItem("cart"));
 
-  //There lies an unfinished change listener. Should've check the
-  //input number and add a span with error message
-
-  /**
-   * @param {Event} event
-   */
-  const handleChange = (event) => {
-    console.log(quantity);
-  };
-
-  
-  useEffect(() => {
-    localCart = JSON.parse(JSON.stringify(localCart));
-    if (localCart) setCart(localCart);
-  }, []);
+  // useEffect(() => {
+  //   localCart = JSON.parse(JSON.stringify(localCart));
+  // }, []);
 
   if (props.category === "Табак") {
     return (
@@ -54,7 +39,6 @@ export function CartItem(props) {
                 step={0.1}
                 min={0.2}
                 name="quantity"
-                onChange={handleChange}
               />
             </div>
           </div>
@@ -118,7 +102,6 @@ export function CartItem(props) {
                 step={0.1}
                 min={0.5}
                 name="quantity"
-                onChange={handleChange}
               />
             </div>
           </div>

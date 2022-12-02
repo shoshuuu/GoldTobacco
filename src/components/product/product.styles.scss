@@ -27,10 +27,10 @@ $background: #312e2b;
       width: 90%;
       margin: 2vw 0;
     }
-    &__learn_more {
+    &__learn__more {
       width: 100%;
-      margin: 10px 0;
-      padding: 10px;
+      margin: 1vw 0;
+      padding: 1.5vw 2vw !important;
       background-color: $background;
       color: $text-color;
       transition: all 0.3s;
@@ -40,8 +40,7 @@ $background: #312e2b;
       }
     }
     &__title {
-      height: 50px;
-      padding: 20px auto;
+      height: 4em;
       display: flex !important;
       font-size: 1vw;
       width: 100%;
